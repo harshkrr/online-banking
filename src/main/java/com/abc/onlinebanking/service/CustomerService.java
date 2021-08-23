@@ -33,4 +33,9 @@ public class CustomerService {
 	{  
 		customerRepository.deleteById(id);  
 	}  
+	//updating a record  
+	public void update(CustomerDetails customer, String customerid)   
+	{  
+		customerRepository.save(customer);  
+	}  
 }
