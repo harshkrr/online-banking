@@ -8,8 +8,32 @@ import com.abc.onlinebanking.repository.*;
 
 @Service 
 public class LoginService {
-	@Autowired  
-	LoginRepository loginRepository;
-	//all business logics
-	//validation
+	@Autowired
+    LoginRepository loginRepository;
+
+    //getting all login records
+    public List<LoginDetails> getAllLogins()
+    {
+        List<LoginDetails> logins = new ArrayList<>();
+        loginRepository.findAll().forEach(logins::add);
+        return logins;
+    }
+
+    //getting a specific record
+    public LoginDetails getLoginById(String id)
+    {
+        return loginRepository.findById(id).get();
+    }
+
+    //saving data
+    public void saveOrUpdate(LoginDetails customer)
+    {
+        loginRepository.save(customer);
+    }
+
+    //deleting a specific record
+    public void delete(String id)
+    {
+        loginRepository.deleteById(id);
+    }
 }

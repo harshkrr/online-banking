@@ -20,9 +20,9 @@ public class AccountDetails {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String accountNumber;
 	
-	@OneToMany(targetEntity = TranscationDetails.class, cascade = CascadeType.ALL)
-	@JoinColumn(name="transcation_fk", referencedColumnName = "accountNumber")
-	private List<TranscationDetails> transcationDetails;
+//	@OneToMany(targetEntity = TranscationDetails.class, cascade = CascadeType.ALL)
+//	@JoinColumn(name="transcation_fk", referencedColumnName = "accountNumber")
+//	private List<TranscationDetails> transcationDetails;
 		
 	@Column(name = "ACC_BALANCE")
 	private float accountBalance;

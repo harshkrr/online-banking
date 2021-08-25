@@ -12,7 +12,7 @@ public class CustomerService {
 	CustomerRepository customerRepository;  
 	
 	//getting all student records  
-	public List<CustomerDetails> getAllCustomer()   
+	public List<CustomerDetails> getAllCustomers()   
 	{  
 		List<CustomerDetails> customers = new ArrayList<CustomerDetails>();  
 		customerRepository.findAll().forEach(customer -> customers.add(customer));  
@@ -20,7 +20,7 @@ public class CustomerService {
 	}  
 	
 	//getting a specific record  
-	public CustomerDetails getCustomerById(int id)   
+	public CustomerDetails getCustomerById(String id)   
 	{  
 		return customerRepository.findById(id).get();  
 	}  
@@ -29,7 +29,7 @@ public class CustomerService {
 		customerRepository.save(customer);  
 	}  
 	//deleting a specific record  
-	public void delete(int id)   
+	public void delete(String id)   
 	{  
 		customerRepository.deleteById(id);  
 	}  

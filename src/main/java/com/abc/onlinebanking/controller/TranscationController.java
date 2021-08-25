@@ -25,7 +25,7 @@ public class TranscationController {
 	@GetMapping("/TranscationDetails")  
 	private List<TranscationDetails> getAllTranscation()   
 	{  
-		return transcationService.getAllTranscation();  
+		return transcationService.getAllTranscations();  
 	}  
 	
 	//creating a get mapping that retrieves the detail of a specific student  
@@ -51,4 +51,3 @@ public class TranscationController {
 		//return CustomerService.getCustomerId();  
 	}
 }
-

@@ -12,7 +12,7 @@ public class TranscationService {
 	TranscationRepository transcationRepository;  
 	
 	//getting all student records  
-	public List<TranscationDetails> getAllTranscation()   
+	public List<TranscationDetails> getAllTranscations()   
 	{  
 		List<TranscationDetails> transcations = new ArrayList<TranscationDetails>();  
 		transcationRepository.findAll().forEach(transcation -> transcations.add(transcation));  
@@ -20,7 +20,7 @@ public class TranscationService {
 	}  
 	
 	//getting a specific record  
-	public TranscationDetails getTranscationById(int id)   
+	public TranscationDetails getTranscationById(long id)   
 	{  
 		return transcationRepository.findById(id).get();  
 	}  
@@ -29,7 +29,7 @@ public class TranscationService {
 		transcationRepository.save(transcation);  
 	}  
 	//deleting a specific record  
-	public void delete(int id)   
+	public void delete(long id)   
 	{  
 		transcationRepository.deleteById(id);  
 	}  

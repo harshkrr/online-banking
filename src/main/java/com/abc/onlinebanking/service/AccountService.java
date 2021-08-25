@@ -12,7 +12,7 @@ public class AccountService {
 	AccountRepository accountRepository;  
 	
 	//getting all student records  
-	public List<AccountDetails> getAllAccount()   
+	public List<AccountDetails> getAllAccounts()   
 	{  
 		List<AccountDetails> accounts = new ArrayList<AccountDetails>();  
 		accountRepository.findAll().forEach(account -> accounts.add(account));  
@@ -20,7 +20,7 @@ public class AccountService {
 	}  
 	
 	//getting a specific record  
-	public AccountDetails getAccountById(int id)   
+	public AccountDetails getAccountById(String id)   
 	{  
 		return accountRepository.findById(id).get();  
 	}  
@@ -29,7 +29,7 @@ public class AccountService {
 		accountRepository.save(account);  
 	}  
 	//deleting a specific record  
-	public void delete(int id)   
+	public void delete(String id)   
 	{  
 		accountRepository.deleteById(id);  
 	}  
