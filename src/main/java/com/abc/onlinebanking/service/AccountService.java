@@ -1,6 +1,9 @@
 package com.abc.onlinebanking.service;
 import java.util.ArrayList;  
-import java.util.List;  
+import java.util.List;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.stereotype.Service; 
 import com.abc.onlinebanking.domain.*;
@@ -8,8 +11,15 @@ import com.abc.onlinebanking.repository.*;
 
 @Service  
 public class AccountService {
-	@Autowired  
+	  
 	AccountRepository accountRepository;  
+	
+	@Autowired
+	public AccountService(AccountRepository accountRepository) {
+		super();
+		this.accountRepository = accountRepository;
+	}
+
 	
 	//getting all student records  
 	public List<AccountDetails> getAllAccounts()   
@@ -24,18 +34,30 @@ public class AccountService {
 	{  
 		return accountRepository.findById(id).get();  
 	}  
-	public void saveOrUpdate(AccountDetails account)   
+	
+	public AccountDetails saveOrUpdate(AccountDetails account)   
 	{  
-		accountRepository.save(account);  
+		return accountRepository.save(account);  
 	}  
 	//deleting a specific record  
-	public void delete(String id)   
+	public AccountDetails delete(String id)   
 	{  
+		AccountDetails ad = getAccountById(id);
 		accountRepository.deleteById(id);  
+		return ad;
 	}  
 	//updating a record  
-	public void update(AccountDetails account, String accountid)   
+	@Transactional
+    public AccountDetails editItem(String id, AccountDetails item){
+		AccountDetails itemToEdit = getAccountById(id);
+        itemToEdit.setAccountBalance(item.getAccountBalance());
+        itemToEdit.setAccountNumber(item.getAccountNumber());
+        itemToEdit.setDateCreated(item.getDateCreated());
+        return itemToEdit;
+    }
+	
+	public AccountDetails update(AccountDetails account, String accountid)   
 	{  
-		accountRepository.save(account);  
+		return accountRepository.save(account);  
 	}  
 }
